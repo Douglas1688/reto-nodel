@@ -1,6 +1,10 @@
 """
 PROBLEMA MONTY HALL EXTENDIDO  A 4 PUERTAS Y SIN CONOCER DÓNDE ESTÉ EL PREMIO
-En este script se analiza qué pasaría si se agrega una puerta más (sin premio) al problema original y que el presentador no sepa en qué puerta está el premio. 
+En este script se analiza qué pasaría si se agrega una puerta más (sin premio) al problema original 
+y que el presentador no sepa en qué puerta está el premio. 
+
+Luego de realizar la simulación 100K y 1M de veces, quedó demostrado que en esta situación un participante 
+tiene el 25% de ganar o el 25% de perder aproximandamente, cambiando o no su elección de puerta.
 """
 
 import random
