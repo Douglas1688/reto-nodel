@@ -243,7 +243,7 @@ def main():
         for x in elem.values():
             if x[-1] == 'click':
                 # Se ejecuta un click
-                WebDriverWait(driver, 5).until(EC.element_to_be_clickable((x[0],x[1]))).click()
+                WebDriverWait(driver, 5).until(EC.element_to_be_clickable((x[0], x[1]))).click()
                 time.sleep(1)
             elif x[-1] == 'dobleclick':
                 doble_click = driver.find_element(x[0], x[1])
@@ -282,7 +282,8 @@ def main():
                 text_input = driver.find_element(x[0],x[1])
                 action.send_keys_to_element(text_input, x[2]).perform()
                 time.sleep(1)
-        driver.close()
+            
+    driver.close()
 
 if __name__ == '__main__':
     main()
