@@ -28,12 +28,12 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets',
           'https://www.googleapis.com/auth/drive.file'
           ]
 # Ruta de las credenciales
-SERVICE_ACCOUNT_FILE = 'prueba1/<<credential.json>>'
+SERVICE_ACCOUNT_FILE = 'prueba1/key.json'
 creds = None
 # Solicitamos el permiso
 creds = service_account.Credentials.from_service_account_file(
     SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-service = build('drive', 'v3', credentials=creds)
+# service = build('drive', 'v3', credentials=creds)
 
 def create(title):
     """
@@ -50,6 +50,7 @@ def create(title):
 
     """
     try:
+        service = build('sheets', 'v4', credentials=creds)
         spreadsheet = {
             'properties': {
                 'title': title
@@ -84,6 +85,7 @@ def share_file(real_file_id, real_user):
     """
 
     try:        
+        service = build('drive', 'v3', credentials=creds)
         ids = []
         file_id = real_file_id
 
@@ -130,6 +132,7 @@ def pivot_tables(spreadsheet_id):
         object: Retorna el objeto respuesta de la API    
     """
     try:
+        service = build('sheets', 'v4', credentials=creds)
         # Se crea una hoja para la tabla dinámica.
         body = {
             'requests': [{
@@ -155,7 +158,7 @@ def pivot_tables(spreadsheet_id):
                                     'startRowIndex': 0,
                                     'startColumnIndex': 0,
                                     'endRowIndex': 16,
-                                    'endColumnIndex': 3
+                                    'endColumnIndex': 4
                                 },
                                 'rows': [
                                     {
@@ -174,6 +177,12 @@ def pivot_tables(spreadsheet_id):
                                 'columns': [
                                     {
                                         'sourceColumnOffset': 2,
+                                        'sortOrder': 'ASCENDING',
+                                        'showTotals': False,
+
+                                    },
+                                    {
+                                        'sourceColumnOffset': 3,
                                         'sortOrder': 'ASCENDING',
                                         'showTotals': False,
 
